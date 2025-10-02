@@ -31,8 +31,26 @@ public class Practica1 {
 
     //EJERCICIO2
     public static void separate (Set<Integer> cuadrados, Set<Integer> noCuadrados)  {
-        //TODO
+        List<Integer> listaElementos = new ArrayList<>(cuadrados);
+        listaElementos.addAll(noCuadrados);
 
+        cuadrados.clear();
+        noCuadrados.clear();
+
+        for (int i = 0; i < listaElementos.size(); i++) {
+            int candidato = listaElementos.get(i);
+            boolean esCuadrado = false;
+
+            for (int j = 0; j < listaElementos.size(); j++) {
+                int base = listaElementos.get(j);
+                if (i != j && base*base == candidato) {
+                    esCuadrado = true;
+                    break;
+                }
+            }
+            if (esCuadrado) cuadrados.add(candidato);
+            else noCuadrados.add(candidato);
+        }
     }
 
     //EJERCICIO 3

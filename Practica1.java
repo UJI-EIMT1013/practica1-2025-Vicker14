@@ -86,10 +86,26 @@ public class Practica1 {
 
     //EJERCICIO 4
     public static<T> Collection<Set<T>> coverageSet2 (Set<T> u,ArrayList<Set<T>> col) {
-        //TODO
-        return null;
+        Set<Set<T>> resultado = new HashSet<>();
+
+        Set<Set<T>> lista = new HashSet<>(col);
+
+        for (Set<T> set1: lista) {
+            for (Set<T> set2: lista) {
+
+                if (set1 == set2) break;
+
+                Set<T> union = new HashSet<>(set1);
+                union.addAll(set2);
+
+                if (union.equals(u)) {
+                    resultado.add(set1);
+                    resultado.add(set2);
+                    return resultado;
+                }
+            }
+        }
+        return new HashSet<>();
     }
-
-
 
 }
